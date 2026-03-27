@@ -38,7 +38,10 @@ export default async function Home() {
         </div>
         <div className="mt-20 grid gap-6 md:grid-cols-4 xl:gird-cols-4">
           {categories.map((category) => (
-            <div className="group overflow-hidden p-0 rounded-4xl border border-white/70 bg-white/88 shadow-soft backdrop-blur-sm">
+            <div
+              key={category.id}
+              className="group overflow-hidden p-0 rounded-4xl border border-white/70 bg-white/88 shadow-soft backdrop-blur-sm"
+            >
               <Image
                 src="/images/placeholder.svg"
                 alt={category.title}

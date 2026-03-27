@@ -1,5 +1,6 @@
 import { Dress } from "@/app/types";
 import Image from "next/image";
+import Link from "next/link";
 
 export function DressCard({ dress }: { dress: Dress }) {
   return (
@@ -32,9 +33,12 @@ export function DressCard({ dress }: { dress: Dress }) {
             <h2 className="text-lg font-medium">{dress.priceDaily}</h2>
             <h3 className="text-sm font-normal ">/ day</h3>
           </div>
-          <h3 className="text-sm font-medium text-(--color-rose) hover:text-(--color-ink) hover:cursor-pointer">
-            View Details
-          </h3>
+          <Link
+            href={`/dresses/${dress.slug}`}
+            className="text-sm font-semibold text-[var(--color-rose-strong)] transition hover:text-[var(--color-ink)]"
+          >
+            View details
+          </Link>
         </div>
       </div>
     </div>
