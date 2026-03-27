@@ -1,3 +1,4 @@
+import { SiteFooter } from "./components/site/footer";
 import SiteHeader from "./components/site/header";
 import "./globals.css";
 export default function RootLayout({ children }) {
@@ -8,6 +9,7 @@ export default function RootLayout({ children }) {
           <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,#fde5ec,transparent_28%),radial-gradient(circle_at_top_right,#edf5ff,transparent_28%),linear-gradient(180deg,#fffaf6_0%,#fffdfb_100%)]" />
           <SiteHeader />
           <main className="flex-1">{children}</main>
+          <SiteFooter />
         </div>
       </body>
     </html>
