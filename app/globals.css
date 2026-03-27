@@ -1,26 +1,46 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-background: #fffaf6;
+  --color-panel: #fff1ec;
+  --color-panel-strong: #fde8ef;
+  --color-border: #f0ddde;
+  --color-ring: rgba(229, 164, 182, 0.25);
+  --color-rose: #dea3b5;
+  --color-rose-strong: #bf7287;
+  --color-ink: #2f2530;
+  --color-ink-soft: #70626d;
+  --color-muted: #ab99a2;
+  --color-blue: #deecfb;
+  --shadow-soft: 0 24px 80px -42px rgba(108, 77, 88, 0.32);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Inter", "Poppins", "Avenir Next", "Segoe UI", sans-serif;
+  --font-heading: "Poppins", "Inter", "Avenir Next", "Segoe UI", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--color-border);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+.prose-soft p {
+  color: var(--color-ink-soft);
 }

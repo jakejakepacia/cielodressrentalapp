@@ -1,0 +1,37 @@
+import Image from "next/image";
+
+export function DressCard() {
+  return (
+    <div className="group overflow-hidden p-0 rounded-4xl border border-white/70 bg-white/88 shadow-soft backdrop-blur-sm">
+      <Image
+        src={"/images/placeholder.svg"}
+        alt="image"
+        width={800}
+        height={960}
+        className="h-72 w-full object-cover transition duration-500 group-hover:scale-[1.03]  rounded-t-4xl"
+      />
+      <div className="py-5 px-5">
+        <div className="flex items-start justify-between gap-4 mb-5">
+          <div>
+            <h3 className="text-lg font-semibold text-(--color-ink)">
+              Sample dress
+            </h3>
+            <p className="text-sm text-(--color-soft)">1 yr old • Cream </p>
+          </div>
+          <div className="bg-(--color-panel) p-3 border rounded-full">
+            <p className="text-sm text-(--color-soft)">Available</p>
+          </div>
+        </div>
+        <div className="flex items-center justify-between gap-4 ">
+          <div className="flex items-center gap-1">
+            <h2 className="text-lg font-medium">200</h2>
+            <h3 className="text-sm font-normal ">/ day</h3>
+          </div>
+          <h3 className="text-sm font-medium text-(--color-rose) hover:text-(--color-ink) hover:cursor-pointer">
+            View Details
+          </h3>
+        </div>
+      </div>
+    </div>
+  );
+}
