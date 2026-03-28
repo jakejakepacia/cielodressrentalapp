@@ -19,23 +19,23 @@ export default function SiteHeader() {
           >
             Browse Dresses
           </Link>
-          <Link href="/about" className="hover:text-[var(--color-rose-strong)]">
-            About
-          </Link>
+
           <Link
-            href="/contact"
+            href="/saved-dresses"
             className="hover:text-[var(--color-rose-strong)]"
           >
-            Contact
+            Saved Dresses
+          </Link>
+          <Link href="/about" className="hover:text-[var(--color-rose-strong)]">
+            About
           </Link>
         </nav>
 
         {/* Desktop Actions */}
         <div className="hidden items-center gap-3 md:flex">
           <button className="px-4 py-2 rounded-[28px] bg-[var(--color-rose)] text-white hover:bg-[var(--color-rose-strong)] shadow-soft">
-            Rent Now
+            <Link href="/saved-dresses">Rent Now</Link>
           </button>
-          <Link href="">LOGIN</Link>
         </div>
 
         {/* Burger Button (mobile only) */}
@@ -58,12 +58,6 @@ export default function SiteHeader() {
               Contact
             </Link>
           </nav>
-
-          <div className="flex flex-col gap-3">
-            <Link onClick={closeMenu} href="">
-              Login
-            </Link>
-          </div>
         </div>
       )}
     </header>

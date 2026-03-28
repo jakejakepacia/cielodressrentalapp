@@ -75,7 +75,10 @@ export default async function Home() {
           />
           <div className="grid gap-6 lg:grid-cols-3">
             {demoTestimonials.map((testimonial) => (
-              <div className="group overflow-hidden p-5 rounded-4xl border border-white/70 bg-white/88 shadow-soft backdrop-blur-sm">
+              <div
+                key={testimonial.id}
+                className="group overflow-hidden p-5 rounded-4xl border border-white/70 bg-white/88 shadow-soft backdrop-blur-sm"
+              >
                 <p className="text-base leading-8 text-[var(--color-ink-soft)]">
                   “{testimonial.quote}”
                 </p>

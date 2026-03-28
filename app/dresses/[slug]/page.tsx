@@ -1,4 +1,6 @@
+import FavoriteButton from "@/app/components/ui/favorite-dress-button";
 import { getDressBySlug } from "@/app/services/catalog";
+import { Dress } from "@/app/types";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -14,6 +16,21 @@ export default async function DressDetailsPage({
     notFound();
   }
 
+  const addToFavorites = ({ dress }: { dress: Dress }) => {
+    try {
+      const stored = localStorage.getItem("favorites");
+      const existing: Dress[] = stored ? JSON.parse(stored) : [];
+
+      const alreadySaved = existing.find((item) => item.id === dress.id);
+
+      if (alreadySaved) return;
+
+      const updated = [...existing, dress];
+      localStorage.setItem("favorites", JSON.stringify(updated));
+    } catch (error) {
+      console.error("Failed to save favorites:", error);
+    }
+  };
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
@@ -72,9 +89,12 @@ export default async function DressDetailsPage({
               </div>
             </div>
           </div>
-          <button className="mt-10 px-4 py-2 rounded-[28px] bg-[var(--color-rose)] text-white hover:bg-[var(--color-rose-strong)] shadow-soft">
-            SEND INQUIRY
-          </button>
+          <div className="mt-10 flex items-start gap-5">
+            <button className="px-4 py-2 rounded-[28px] bg-[var(--color-rose)] text-white hover:bg-[var(--color-rose-strong)] shadow-soft">
+              RENT NOW
+            </button>
+            <FavoriteButton dress={dress} />
+          </div>
         </div>
       </div>
     </div>
