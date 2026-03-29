@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { supabase } from "./../lib/supabaseClient";
 import { useRouter } from "next/navigation"; // <-- client-side router
+import getUserRole from "../services/auth";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -18,11 +19,35 @@ export default function Login() {
     });
 
     if (error) return alert(error.message);
-    router.push("/admin/dresses");
+
+    const session = data.session;
+
+    // 🔥 THIS IS THE CRITICAL PART
+    if (session) {
+      document.cookie = `sb-access-token=${session.access_token}; path=/`;
+      document.cookie = `sb-refresh-token=${session.refresh_token}; path=/`;
+    }
+
+    const user = data.user;
+
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("id", user.id)
+      .single();
+
+    const role = profile?.role ?? "user";
+    console.log("Logged in user role: ", role);
+    if (role === "admin") {
+      router.push("/admin/dresses");
+      router.refresh(); // <-- refresh to update header
+    } else {
+      router.push("/dresses");
+    }
   };
 
   return (
-    <form onSubmit={handleLogin} className="space-y-4 max-w-md mx-auto">
+    <form onSubmit={handleLogin} className="mt-8 space-y-4 max-w-md mx-auto">
       <input
         type="email"
         placeholder="Email"
