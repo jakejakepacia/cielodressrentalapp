@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { supabase } from "./../lib/supabaseClient";
 import { useRouter } from "next/navigation"; // <-- client-side router
-import getUserRole from "../services/auth";
 
 export default function Login() {
   const [email, setEmail] = useState("");
